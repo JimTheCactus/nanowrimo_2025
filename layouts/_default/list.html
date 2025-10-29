@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section>
+  <h1>{{ .Title }}</h1>
+  <div class="toc">
+    <ul>
+      {{ range .Pages.ByWeight }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <small>— {{ .WordCount }} words</small>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
+
+

@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "JetBrainsMono";
+  src: local("JetBrains Mono"), local("JetBrainsMono");
+}
+
+:root {
+  --bg: #001a00;
+  --fg: #00ff7f;
+  --muted: #3cff9f;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: JetBrainsMono, Consolas, Monaco, "Courier New", monospace;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+a { color: var(--fg); }
+a:hover { color: var(--muted); }
+
+header, footer {
+  border-top: 1px dashed var(--muted);
+  border-bottom: 1px dashed var(--muted);
+  padding: 0.75rem 0;
+  margin: 0 0 1rem;
+}
+
+nav a { margin-right: 1rem; }
+
+code, pre {
+  color: var(--bg);
+  background: var(--fg);
+  padding: 0.1rem 0.3rem;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px dashed var(--muted); padding: 0.4rem; }
+
+.toc ul { list-style: none; padding-left: 0; }
+.toc li { margin: 0.25rem 0; }
+
+

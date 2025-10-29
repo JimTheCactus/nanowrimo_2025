@@ -10,6 +10,9 @@ A repository for my NaNoWriMo 2025 novel. This repository will accept chapters o
 * The home page will have a table of contents with a list of the chapters that are links to the chapter pages
 * The HTML/CSS/JavaScript will be generated using a standard static site generator like Jekyll or Hugo
 * The site will be responsive and mobile-friendly
+* Automatic generation of the table of contents (TOC) from chapter files during the build
+* Word count tracking per chapter and total, with progress toward 50,000 words
+* Support Obsidian-style wiki-links (e.g., [[Chapter Title]]) resolved to chapter URLs
 
 ## Stretch goas
 * Ideally as files in an Obsidian vault using the Git plugin

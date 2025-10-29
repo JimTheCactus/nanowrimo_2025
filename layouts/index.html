@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section>
+  <h1>{{ .Title }}</h1>
+
+  {{ $chaptersSection := site.GetPage "section" "chapters" }}
+  {{ if $chaptersSection }}
+    {{ $chapters := $chaptersSection.Pages.ByWeight }}
+    {{ $total := 0 }}
+    {{ range $chapters }}{{ $total = add $total .WordCount }}{{ end }}
+    {{ $goal := 50000 }}
+    {{ $pct := div (mul $total 100) $goal }}
+
+    <p><strong>Total words:</strong> {{ $total }} / {{ $goal }} ({{ $pct }}%)</p>
+
+    <div class="toc">
+      <ul>
+        {{ range $chapters }}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <small>— {{ .WordCount }} words</small>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  {{ else }}
+    <p>No chapters found yet. Add files under <code>content/chapters/</code>.</p>
+  {{ end }}
+</section>
+{{ end }}
+
+

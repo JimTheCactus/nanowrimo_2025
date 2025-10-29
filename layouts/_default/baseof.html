@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    {{ $styles := resources.Get "css/terminal.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+  </head>
+  <body>
+    <header>
+      <main>
+        <nav>
+          <a href="{{ .Site.BaseURL }}">home</a>
+          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
+          {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+        </nav>
+      </main>
+    </header>
+
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+      <main>
+        <nav>
+          <a href="{{ .Site.BaseURL }}">home</a>
+          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
+          {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+        </nav>
+      </main>
+    </footer>
+  </body>
+</html>
+
+

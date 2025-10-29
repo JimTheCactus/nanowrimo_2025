@@ -1,0 +1,18 @@
+baseURL = "/" # Set to your GitHub Pages URL later, e.g., "https://<user>.github.io/<repo>/"
+title = "NaNoWriMo 2025"
+languageCode = "en-us"
+
+[params]
+primaryColor = "#00ff7f"
+backgroundColor = "#001a00"
+maxContentWidth = "800px"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  chapters = "/chapters/:slug/"
+
+
