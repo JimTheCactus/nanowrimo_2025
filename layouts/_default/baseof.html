@@ -12,8 +12,10 @@
       <main>
         <nav>
           <a href="{{ .Site.BaseURL }}">home</a>
-          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
-          {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+          {{ if eq .Section "chapters" }}
+            {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
+            {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+          {{ end }}
         </nav>
       </main>
     </header>
@@ -26,8 +28,10 @@
       <main>
         <nav>
           <a href="{{ .Site.BaseURL }}">home</a>
-          {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
-          {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+          {{ if eq .Section "chapters" }}
+            {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">prev</a>{{ end }}
+            {{ with .NextInSection }}<a href="{{ .RelPermalink }}">next</a>{{ end }}
+          {{ end }}
         </nav>
       </main>
     </footer>

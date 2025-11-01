@@ -18,7 +18,7 @@
 ## Next steps
 - [ ] Set `baseURL` in `hugo.toml` (GitHub Pages URL or custom domain)
 - [ ] Add `static/CNAME` if using a custom domain and enable Pages
-- [ ] Ensure chapter header/footer show home, prev, and next links
+- [x] Ensure chapter header/footer show home, prev, and next links
 - [ ] Improve responsive styles (mobile spacing, font sizes, typography)
 - [x] Generate TOC on home from chapter files, sorted by `weight`
 - [x] Show per-chapter word counts in TOC and total word count on home

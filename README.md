@@ -18,3 +18,26 @@ A repository for my NaNoWriMo 2025 novel. This repository will accept chapters o
 * Ideally as files in an Obsidian vault using the Git plugin
 * The bottom of the screen will have a command line interface for the user to interact with the book (such as navigating to new chapters via "cat chapter 2" or something similar)
 * The site will be hosted on a custom domain
+
+## Author notes
+* Add chapters under `content/chapters/` as Markdown files. Example front matter:
+  ```
+  ---
+  title: "Chapter 2: Title"
+  weight: 2
+  ---
+  ```
+  - `weight` controls order and prev/next navigation within the `chapters` section.
+* Home page automatically lists chapters (by weight), shows per-chapter word counts, total words, and progress toward 50,000.
+* Use standard Markdown. Obsidian-style wiki-links `[[Title]]` will be supported by a future task.
+
+## Developer notes
+* Static site generator: Hugo.
+* Navigation: Chapter pages show `home`, `prev`, and `next` links automatically (based on section and weight).
+* Styling: See `assets/css/terminal.css` for green terminal theme.
+* Layouts:
+  - Base template: `layouts/_default/baseof.html`
+  - Chapter page: `layouts/_default/single.html`
+  - Home (TOC): `layouts/index.html`
+* Build/deploy: GitHub Actions workflow at `.github/workflows/pages.yml` builds with Hugo and deploys to GitHub Pages on pushes to `main`.
+* Configuration: `hugo.toml` — set `baseURL` to your Pages URL or custom domain. For a custom domain, add `static/CNAME` with the domain name.
