@@ -15,4 +15,8 @@ maxContentWidth = "800px"
 [permalinks]
   chapters = "/chapters/:slug/"
 
+[page]
+  nextPrevInSectionSortOrder = 'asc'
+  nextPrevSortOrder = 'asc'
+
 
