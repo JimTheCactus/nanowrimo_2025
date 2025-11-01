@@ -1,4 +1,4 @@
-baseURL = "/" # Set to your GitHub Pages URL later, e.g., "https://<user>.github.io/<repo>/"
+baseURL = "https://jimthecactus.github.io/nanowrimo_2025/"
 title = "NaNoWriMo 2025"
 languageCode = "en-us"
 
