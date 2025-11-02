@@ -1,0 +1,1 @@
+Kills all of the people in a starsystem, but leaves all the tech untouched, and doesn't leave lingering residue that prevents re-habitation.

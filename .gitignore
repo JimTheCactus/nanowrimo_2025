@@ -55,3 +55,5 @@ yarn.lock
 *.backup
 *~
 
+# Generated files
+_generated/

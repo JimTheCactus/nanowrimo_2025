@@ -1,0 +1,14 @@
+---
+tags:
+  - race
+---
+- Somewhat muscular Cheetah-like humanoid 
+- Has a tail
+- Obligate carnivores. They can eat some non-meat foods, but their diet is effectively 100% meat.
+- Strong compared to humans
+- No sexual dimorphism
+- Str: +2
+- Height Range (2 sigma): 6’7”-8’0”
+- Weight Range (2 sigma): 250 – 450 lbs.
+- Make a point to use highly gendered names to avoid microaggression from humans who get fussy about gender.
+- The Cheetah homeworld participates in the [[United Dimensions Alliance|UDA]]

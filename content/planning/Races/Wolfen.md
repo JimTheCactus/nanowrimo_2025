@@ -1,0 +1,29 @@
+---
+tags:
+  - race
+---
+- Muscular Wolf-Like humanoids
+- Have fluffy, dog-like tails.
+- Exceptional strength compared to humans
+- Carnivorous. Can and will eat non-meat, but their diet is typically at least 70% meat.
+- Differs from wolves in that they do not have “litters”
+- Shed twice a year or so. But without planetary reference it kinda happens with its own mind.
+- Like Earth dogs they can't sweat, and instead shed heat by panting, drinking, and covering themselves with water.
+	- This makes them ill-suited for long duration running.
+- Were originally genemodded dogs from earth. They spent several centuries in servitude before being liberated by the [[Rokk]] and given their own homeworld to develop: [[Yellowstone]].
+- The Wolfen homeworld participates in the [[United Dimensions Alliance|UDA]]
+- Sexually Dimorphic
+	- Males:
+		- Fur is more bristly. Tends to have less sheen.
+		- Same dimorphic elements as Human males
+		- Str: + 4
+		- Height Range (2 sigma): 6’3” – 7’4”
+		- Weight range (2 sigma): 300 – 450 lbs
+		- Monochromatic. 
+	- Females:
+		- Fur is smoother, more fine. Tends to have a better sheen
+		- Same dimorphic elements as human females
+		- Str: + 3
+		- Height range (2 sigma): 6’0” – 7’0”
+		- Weight range (2 sigma): 250 – 375 lbs
+		- Dichromatic. Underbelly is typically white, though some blacks turn up (recessive genetic trait with positive selecting factors for it due to black being “sexy”)
