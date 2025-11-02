@@ -71,5 +71,5 @@
 {{ $brokenSimplePattern := `\[\[([^\]]+)\]\]` }}
 {{ $content = $content | replaceRE $brokenSimplePattern `<span class="wiki-link-broken" title="Chapter not found: $1">[[$1]]</span>` }}
 
-{{/* Return processed content */}}
-{{ return $content | safeHTML }}
+{{/* Output processed content */}}
+{{ $content | safeHTML }}
