@@ -1,0 +1,75 @@
+{{/*
+  Processes Obsidian-style wiki links in content.
+  Supports: [[filename]] and [[filename|Custom Text]]
+
+  Usage: {{ partial "wiki-links.html" (dict "content" .Content "context" .) }}
+*/}}
+
+{{ $content := .content }}
+{{ $context := .context }}
+
+{{/* Build lookup map of chapters by filename and slug */}}
+{{ $chaptersSection := $context.Site.GetPage "section" "chapters" }}
+{{ $chapterMap := dict }}
+{{ if $chaptersSection }}
+  {{ range $chaptersSection.Pages }}
+    {{/* Use filename without extension as primary key */}}
+    {{ $filename := .File.TranslationBaseName }}
+    {{ $slug := .Slug }}
+
+    {{/* Store by filename (lowercase for case-insensitive matching) */}}
+    {{ $keyLower := lower $filename }}
+    {{ $chapterMap = merge $chapterMap (dict $keyLower (dict "page" . "title" .Title "filename" $filename "slug" $slug)) }}
+
+    {{/* Also store by slug if different from filename */}}
+    {{ if ne $slug $filename }}
+      {{ $slugLower := lower $slug }}
+      {{ $chapterMap = merge $chapterMap (dict $slugLower (dict "page" . "title" .Title "filename" $filename "slug" $slug)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Process links with aliases: [[filename|Text]] - must come before simple links */}}
+{{ range $key, $chapterData := $chapterMap }}
+  {{ $filename := $chapterData.filename }}
+  {{ $page := $chapterData.page }}
+
+  {{/* Escape special regex characters in filename for use in pattern */}}
+  {{ $escapedFilename := $filename | replaceRE `([\[\]\\\^\$\.\|\?\*\+\(\)\{\}])` `\\$1` }}
+  {{ $escapedKey := $key | replaceRE `([\[\]\\\^\$\.\|\?\*\+\(\)\{\}])` `\\$1` }}
+
+  {{/* Pattern: [[filename|Text]] or [[slug|Text]] - match both */}}
+  {{ $pattern := printf `\[\[(%s|%s)\|([^\]]+)\]\]` $escapedFilename $escapedKey }}
+  {{ $replacement := printf `<a href="%s">$2</a>` $page.RelPermalink }}
+  {{ $content = $content | replaceRE $pattern $replacement }}
+{{ end }}
+
+{{/* Process simple links: [[filename]] */}}
+{{ range $key, $chapterData := $chapterMap }}
+  {{ $filename := $chapterData.filename }}
+  {{ $page := $chapterData.page }}
+  {{ $title := $chapterData.title }}
+
+  {{/* Escape special regex characters in filename for use in pattern */}}
+  {{ $escapedFilename := $filename | replaceRE `([\[\]\\\^\$\.\|\?\*\+\(\)\{\}])` `\\$1` }}
+  {{ $escapedKey := $key | replaceRE `([\[\]\\\^\$\.\|\?\*\+\(\)\{\}])` `\\$1` }}
+
+  {{/* Pattern: [[filename]] or [[slug]] - match both */}}
+  {{/* Note: Aliased links already processed above, so they won't match this pattern */}}
+  {{ $pattern := printf `\[\[(%s|%s)\]\]` $escapedFilename $escapedKey }}
+  {{ $escapedTitle := $title | htmlEscape }}
+  {{ $replacement := printf `<a href="%s">%s</a>` $page.RelPermalink $escapedTitle }}
+  {{ $content = $content | replaceRE $pattern $replacement }}
+{{ end }}
+
+{{/* Mark remaining unmatched wiki links as broken */}}
+{{/* Handle aliased broken links: [[filename|Text]] */}}
+{{ $brokenAliasedPattern := `\[\[([^\]]+)\|([^\]]+)\]\]` }}
+{{ $content = $content | replaceRE $brokenAliasedPattern `<span class="wiki-link-broken" title="Chapter not found: $1">[[$1|$2]]</span>` }}
+
+{{/* Handle simple broken links: [[filename]] */}}
+{{ $brokenSimplePattern := `\[\[([^\]]+)\]\]` }}
+{{ $content = $content | replaceRE $brokenSimplePattern `<span class="wiki-link-broken" title="Chapter not found: $1">[[$1]]</span>` }}
+
+{{/* Return processed content */}}
+{{ return $content | safeHTML }}

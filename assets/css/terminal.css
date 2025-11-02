@@ -47,4 +47,10 @@ th, td { border-bottom: 1px dashed var(--muted); padding: 0.4rem; }
 .toc ul { list-style: none; padding-left: 0; }
 .toc li { margin: 0.25rem 0; }
 
+.wiki-link-broken {
+  color: #ff7f7f;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
 
